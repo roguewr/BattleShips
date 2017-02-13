@@ -11,14 +11,8 @@ namespace BattleShips
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            GameBoard GameBoard = new GameBoard();
-=======
-            GameBoard gb = new GameBoard();
-            gb.Render();
-            Console.ReadLine();
->>>>>>> origin/master
 
+            GameBoard GameBoard = new GameBoard();
             GameBoard.RenderBoard();
             Console.ReadKey();
 
