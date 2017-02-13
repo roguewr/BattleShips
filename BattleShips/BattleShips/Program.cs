@@ -10,9 +10,10 @@ namespace BattleShips
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("helloworld");
-            Console.ReadLine();
+            GameBoard GameBoard = new GameBoard();
 
+            GameBoard.RenderBoard();
+            Console.ReadKey();
 
         }
     }
