@@ -8,6 +8,7 @@ namespace BattleShips
 {
     class GameBoard
     {
+<<<<<<< HEAD
         private Coordinate[,] board = new Coordinate[20, 20];
 
         public GameBoard()
@@ -51,3 +52,30 @@ namespace BattleShips
 
     }
 }
+=======
+        //bool [,] board = new bool[20,20];
+
+        public GameBoard() { }
+
+        
+        //public void RenderBoard()
+        //{
+        //    for (int i=0; i<board.GetLength(0); i++)
+        //    {
+        //        for (int j=0; j<board.GetLength(1); j++)
+        //        {
+        //            Console.Write(board[i, j] + " ");
+        //        }
+        //        Console.Write("");
+        //    }
+        //}
+
+        public void Render()
+        {
+            Console.WriteLine("helloworld2");
+        }
+    }
+}
+
+
+>>>>>>> origin/master
