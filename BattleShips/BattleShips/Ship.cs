@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BattleShips
 {
-    class Ship
+    public class Ship
     {
         int length;
         List<Coordinate> coordinates;
+        private bool sunk;
 
         public Ship(List<Coordinate> coordinates)
         {
@@ -17,38 +18,21 @@ namespace BattleShips
             length = coordinates.Count;
         }
 
-    }
-
-    public class Coordinate
-    {
-        int x = 0;
-        int y = 0;
-        public bool shotAt = false;
-
-        public Coordinate(int x, int y)
+        public bool IsSunk()
         {
-            this.x = x;
-            this.y = y;
+            return sunk;
         }
 
-        void ShootAt()
+        public void calcIsSunk()
         {
-            shotAt = true;
-        }
-
-        string getSymbol()
-        {
-            if (shotAt)
+            sunk = true;
+            foreach (Coordinate c in coordinates)
             {
-                return "0";
-            } else
-            {
-                return "~";
+                if(c.ShotAt()) {
+                    sunk = false;
+                    break;
+                }
             }
-
-
-        }
-
-
+        } 
     }
 }

@@ -8,11 +8,21 @@ namespace BattleShips
 {
     class GameBoard
     {
-<<<<<<< HEAD
-        private Coordinate[,] board = new Coordinate[20, 20];
+
+        public const int boardSize = 20;
+        private Coordinate[,] board = new Coordinate[boardSize, boardSize];
+        private List<Ship> ships = new List<Ship>();
+        const int numberOfShips = 4;
 
         public GameBoard()
         {
+            ResetBoard();
+            GenerateShips();
+        }
+
+        public void ResetBoard()
+        {
+            // reset board
             for (int x = 0; x < board.GetLength(0); x += 1)
             {
                 for (int y = 0; y < board.GetLength(1); y += 1)
@@ -20,6 +30,10 @@ namespace BattleShips
                     board[x, y] = new Coordinate(x, y);
                 }
             }
+
+            //clear out and regenerate ships
+            ships.Clear();
+
         }
 
         public void RenderBoard()
@@ -28,7 +42,7 @@ namespace BattleShips
             {
                 for (int y = 0; y < board.GetLength(1); y += 1)
                 {
-                    Console.Write(getSpot(x,y) + " ");
+                    Console.Write(board[x, y].Render() + " ");
                 }
                 Console.WriteLine("");
             }
@@ -36,46 +50,41 @@ namespace BattleShips
 
         }
 
-        public string getSpot(int x, int y)
+        public bool ShootAt(int x, int y)
         {
-            if (board[x, y].shotAt)
+            return board[x, y].ShootAt();
+        }
+
+        public void GenerateShips()
+        {
+            /*
+            for (int x = 0; x < numberOfShips; x++)
             {
-                return "X";
-            } else
-            {
-                return "0";
+
             }
-
+            */
+            GenerateStaticShips();
 
         }
 
-
-    }
-}
-=======
-        //bool [,] board = new bool[20,20];
-
-        public GameBoard() { }
-
-        
-        //public void RenderBoard()
-        //{
-        //    for (int i=0; i<board.GetLength(0); i++)
-        //    {
-        //        for (int j=0; j<board.GetLength(1); j++)
-        //        {
-        //            Console.Write(board[i, j] + " ");
-        //        }
-        //        Console.Write("");
-        //    }
-        //}
-
-        public void Render()
+        public void GenerateStaticShips()
         {
-            Console.WriteLine("helloworld2");
+            // Generates a some static ships, just something to test with.
+            // Probably a bad idea for the coordinates to know of the ship and the ship to know of the coordinates but it's more efficent so meh..?
+
+            List<Coordinate> Cs = new List<Coordinate>();
+
+            Cs.Add(board[0, 1]);
+            Cs.Add(board[0, 2]);
+            Cs.Add(board[0, 3]);
+
+            Ship ship = new Ship(Cs);
+            ships.Add(ship);
+
+            foreach (Coordinate c in Cs)
+            {
+                c.AssignShip(ship);
+            }
         }
     }
 }
-
-
->>>>>>> origin/master
